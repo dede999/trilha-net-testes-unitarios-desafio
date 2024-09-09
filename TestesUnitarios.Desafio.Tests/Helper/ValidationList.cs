@@ -8,6 +8,9 @@ public class ValidationList
     public int MultiplicationFactor { get; set; }
     public int Biggest { get; set; } = int.MinValue;
     public int Smallest { get; set; } = int.MaxValue;
+    public int Sum { get; set; } = 0;
+    public int Product { get; set; } = 1;
+    public double Average { get; set; }
 
     public ValidationList(int listLength)
     {
@@ -29,6 +32,9 @@ public class ValidationList
             {
                 Smallest = number;
             }
+            Sum += number;
+            Product *= number;
         }
+        Average = (double) Sum / listLength;
     }
 }

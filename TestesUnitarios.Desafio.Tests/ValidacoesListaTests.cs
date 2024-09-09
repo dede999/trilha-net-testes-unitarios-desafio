@@ -94,7 +94,7 @@ public class ValidacoesListaTests
     {
         // Arrange
         var lista = _validationList.OriginalList;
-        var resultadoEsperado = lista.Sum();
+        var resultadoEsperado = _validationList.Sum;
 
         // Act
         var resultado = _validacoes.SomarNumerosLista(lista);
@@ -108,7 +108,7 @@ public class ValidacoesListaTests
     {
         // Arrange
         var lista = _validationList.OriginalList;
-        var resultadoEsperado = lista.Average();
+        var resultadoEsperado = _validationList.Average;
 
         // Act
         var resultado = _validacoes.CalcularMediaLista(lista);
@@ -122,7 +122,7 @@ public class ValidacoesListaTests
     {
         // Arrange
         var lista = _validationList.OriginalList;
-        var resultadoEsperado = lista.Aggregate((x, y) => x * y);
+        var resultadoEsperado = _validationList.Product;
 
         // Act
         var resultado = _validacoes.CalcularProdutoLista(lista);
