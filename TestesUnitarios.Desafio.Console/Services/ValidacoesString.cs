@@ -14,10 +14,22 @@ namespace TestesUnitarios.Desafio.Console.Services
             return contem;
         }
 
-        public bool TextoTerminaCom(string texto, string textoProcurado)
+        public bool TextoTerminaCom(
+            string texto,
+            string textoProcurado,
+            System.StringComparison comparison = StringComparison.InvariantCulture)
         {
-            var termina = texto.EndsWith(textoProcurado);
+            var termina = texto.EndsWith(textoProcurado, comparison);
             return termina;
+        }
+
+        public bool TextoComecaCom(
+            string texto,
+            string textoProcurado,
+            System.StringComparison comparison = StringComparison.InvariantCulture)
+        {
+            var comeca = texto.StartsWith(textoProcurado, comparison);
+            return comeca;
         }
     }
 }
