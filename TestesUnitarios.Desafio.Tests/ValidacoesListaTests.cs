@@ -77,7 +77,7 @@ public class ValidacoesListaTests
     }
 
     [Fact]
-    public void DeveRetornarOitoNegativoComoMenorNumeroDaLista()
+    public void ShouldReturnTheSmallestNumber()
     {
         // Arrange
         var lista = _validationList.OriginalList;
@@ -87,5 +87,47 @@ public class ValidacoesListaTests
 
         // Assert
         Assert.Equal(_validationList.Smallest, resultado);
+    }
+    
+    [Fact]
+    public void ShouldReturnTheSumOfAllNumbers()
+    {
+        // Arrange
+        var lista = _validationList.OriginalList;
+        var resultadoEsperado = lista.Sum();
+
+        // Act
+        var resultado = _validacoes.SomarNumerosLista(lista);
+
+        // Assert
+        Assert.Equal(resultadoEsperado, resultado);
+    }
+    
+    [Fact]
+    public void ShouldReturnTheAverageOfAllNumbers()
+    {
+        // Arrange
+        var lista = _validationList.OriginalList;
+        var resultadoEsperado = lista.Average();
+
+        // Act
+        var resultado = _validacoes.CalcularMediaLista(lista);
+
+        // Assert
+        Assert.Equal(resultadoEsperado, resultado);
+    }
+    
+    [Fact]
+    public void ShouldReturnTheProductOfAllNumbers()
+    {
+        // Arrange
+        var lista = _validationList.OriginalList;
+        var resultadoEsperado = lista.Aggregate((x, y) => x * y);
+
+        // Act
+        var resultado = _validacoes.CalcularProdutoLista(lista);
+
+        // Assert
+        Assert.Equal(resultadoEsperado, resultado);
     }
 }
