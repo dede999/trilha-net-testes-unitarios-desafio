@@ -45,17 +45,43 @@ public class ValidacoesStringTests
         Assert.False(resultado);
     }
 
-    [Fact]
-    public void TextoDeveTerminarComAPalavraProcurado()
+    [Theory]
+    [InlineData("procurado", true, System.StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData("Procurado", true, System.StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData("PROCURADO", true, System.StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData("procurado", true, System.StringComparison.InvariantCulture)]
+    [InlineData("Procurado", false, System.StringComparison.InvariantCulture)]
+    [InlineData("PROCURADO", false, System.StringComparison.InvariantCulture)]
+    public void TextoDeveTerminarComAPalavraProcurado(
+        string textoProcurado, bool esperado, System.StringComparison comparison)
     {
         // Arrange
         var texto = "Começo, meio e fim do texto procurado";
-        var textoProcurado = "procurado";
 
         // Act
-        var resultado = _validacoes.TextoTerminaCom(texto, textoProcurado);
+        var resultado = _validacoes.TextoTerminaCom(texto, textoProcurado, comparison);
 
         // Assert
-        Assert.True(resultado);
+        Assert.Equal(esperado, resultado);
+    }
+    
+    [Theory]
+    [InlineData("Começo", true, System.StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData("começo", true, System.StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData("COMEÇO", true, System.StringComparison.InvariantCultureIgnoreCase)]
+    [InlineData("Começo", true, System.StringComparison.InvariantCulture)]
+    [InlineData("começo", false, System.StringComparison.InvariantCulture)]
+    [InlineData("COMEÇO", false, System.StringComparison.InvariantCulture)]
+    public void TextoDeveComecarComAPalavraComeco(
+        string textoProcurado, bool esperado, System.StringComparison comparison)
+    {
+        // Arrange
+        var texto = "Começo, meio e fim do texto procurado";
+
+        // Act
+        var resultado = _validacoes.TextoComecaCom(texto, textoProcurado, comparison);
+
+        // Assert
+        Assert.Equal(esperado, resultado);
     }
 }
