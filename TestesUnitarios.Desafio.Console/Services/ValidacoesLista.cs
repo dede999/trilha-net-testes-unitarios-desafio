@@ -29,5 +29,20 @@ namespace TestesUnitarios.Desafio.Console.Services
         {
             return lista.Min();
         }
+
+        public int SomarNumerosLista(List<int> lista)
+        {
+            return lista.Sum();
+        }
+
+        public double CalcularMediaLista(List<int> lista)
+        {
+            return lista.Average();
+        }
+
+        public int CalcularProdutoLista(List<int> lista)
+        {
+            return lista.Aggregate((x, y) => x * y);
+        }
     }
 }
